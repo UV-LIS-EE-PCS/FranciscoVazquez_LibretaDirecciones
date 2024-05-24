@@ -17,27 +17,27 @@ public class Menu {
     public Menu(AddressBook addressBook) {
         this.addressBook = addressBook;
         this.scanner = new Scanner(System.in);
-//        this.option = ' ';
+        this.option = ' ';
     }
 
     // Metodos
     public void displayMenu(){
         do{
-            printMenuOptions();
+            System.out.println(printMenuOptions());
             getUserOption();
             executeUserOption(option);
         }while(option != 'f');
     }
 
-    private void printMenuOptions(){
-        System.out.println("\nAddress Book Menu:");
-        System.out.println("a) Cargar entradas desde un archivo.");
-        System.out.println("b) Agregar una nueva entrada.");
-        System.out.println("c) Eliminar una entrada.");
-        System.out.println("d) Buscar una entrada por apellido.");
-        System.out.println("e) Mostrar todas las entradas ordenadas por apellido.");
-        System.out.println("f) Salir.");
-        System.out.print("Seleccione una opción (a-f): ");
+    public String printMenuOptions(){
+        return "\nAddress Book Menu:\n" +
+                "a) Cargar entradas desde un archivo.\n" +
+                "b) Agregar una nueva entrada.\n" +
+                "c) Eliminar una entrada.\n" +
+                "d) Buscar una entrada por apellido.\n" +
+                "e) Mostrar todas las entradas ordenadas por apellido.\n" +
+                "f) Salir.\n" +
+                "Seleccione una opción (a-f): ";
     }
 
     private void getUserOption(){
@@ -52,7 +52,7 @@ public class Menu {
         }
     }
 
-    private void executeUserOption(char option){
+    public void executeUserOption(char option){
         switch (Character.toLowerCase(option)) {
             case 'a' -> loadEntriesFromFile(); // Metodo para leer archivos de texto por consola
             case 'b' -> addUserEntry(); // Registrar nuevo registro de entrada
@@ -64,7 +64,7 @@ public class Menu {
         }
     }
 
-    private void addUserEntry(){
+    public void addUserEntry(){
         try {
             System.out.println("Ingrese los detalles del nuevo registro:");
             System.out.println("Nombre: ");
@@ -101,7 +101,7 @@ public class Menu {
         }
     }
 
-    private void deleteUserEntry(){
+    public void deleteUserEntry(){
         System.out.println("Ingrese el apellido del registro que desee borrar.");
         String lastNameDelete = scanner.nextLine().trim();
         List<AddressEntry> result = addressBook.searchEntry(lastNameDelete);
@@ -120,18 +120,18 @@ public class Menu {
     }
 
 
-    private void searchUserEntry() {
+    public void searchUserEntry() {
         System.out.println("Ingrese el apellido del contacto que desee buscar:");
         String lastNameEntry = scanner.nextLine().trim();
         addressBook.searchEntry(lastNameEntry);
         addressBook.printSearchResults(lastNameEntry);
     }
 
-    private void sortUserEntry(){
+    public void sortUserEntry() {
         addressBook.printEntriesSortedByLastName();
     }
 
-    private void loadEntriesFromFile() {
+    public void loadEntriesFromFile() {
         System.out.println("El archivo debe de tener la información separada por comas: Nombre, Apellido, Calle, etc.");
         System.out.println("Ingrese el nombre del archivo (con extensión .txt): ");
         String fileName = scanner.nextLine().trim();
@@ -180,7 +180,6 @@ public class Menu {
             throw new Exception("El número de teléfono debe ser de 10 dígitos.");
         }
     }
-
 
 }
 

@@ -66,5 +66,9 @@ public class AddressBook {
             count++;
         }
     }
+
+    public List<AddressEntry> getAddressEntries(){
+        return addressEntries;
+    }
 }
 

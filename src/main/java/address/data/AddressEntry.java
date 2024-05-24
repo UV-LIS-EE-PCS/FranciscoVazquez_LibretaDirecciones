@@ -91,8 +91,7 @@ public class AddressEntry {
 
     @Override
     public String toString() {
-        return getName() + " " + getLastName() + "\n" + street + "\n" + city
-                + ", " + state + ", C.P. " + postalCode + "\n" + email + "\n" + phone;
+        return getName() + " " + getLastName() + "\n" + getStreet() + "\n" + getCity()
+                + ", " + getState() + ", C.P. " + getPostalCode() + "\n" + getEmail() + "\n" + getPhone();
     }
-
 }

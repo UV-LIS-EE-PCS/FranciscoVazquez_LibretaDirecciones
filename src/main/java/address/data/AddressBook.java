@@ -67,8 +67,5 @@ public class AddressBook {
         }
     }
 
-    public List<AddressEntry> getAddressEntries(){
-        return addressEntries;
-    }
 }
 

@@ -67,7 +67,7 @@ public class Menu {
     public void addUserEntry(){
         try {
             System.out.println("Ingrese los detalles del nuevo registro:");
-            System.out.println("Nombre: ");
+            System.out.print("Nombre: ");
             String name = scanner.nextLine().trim();
             System.out.print("Apellido: ");
             String lastName = scanner.nextLine().trim();
@@ -180,7 +180,6 @@ public class Menu {
             throw new Exception("El número de teléfono debe ser de 10 dígitos.");
         }
     }
-
 }
 
 

@@ -1,8 +1,9 @@
 # Proyecto Libreta de Direcciones en Java
 
 Este proyecto implementa una libreta de direcciones simple en Java. Permite a los usuarios agregar, eliminar, buscar y mostrar entradas de direcciones, además de cargar datos desde un archivo.
+(Para una información más detallada revise la wiki del repositorio).
 
-## Estructura del Proyecto
+## _Estructura del Proyecto
 
 El proyecto está organizado en los siguientes paquetes y clases:
 
@@ -21,7 +22,7 @@ El proyecto está organizado en los siguientes paquetes y clases:
 
 - **`AddressBookTest`**: Prueba las operaciones del libro de direcciones, como agregar y eliminar entradas.
 - **`AddressEntryTest`**: Verifica que los metodos de la clase AddressEntry funcionen correctamente.
-- **`MenuTest`**: Asegura que el menú de opciones de despliegue correctamente.
+- **`MenuTest`**: Asegura que el menú de opciones de despliegue correctamente._
 
 ## Características
 

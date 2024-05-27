@@ -40,7 +40,7 @@ public class Menu {
                 "Seleccione una opción (a-f): ";
     }
 
-    private void getUserOption(){
+    public void getUserOption(){
         while (true) {
             String input = scanner.nextLine().trim();
             if (!input.isEmpty()) {

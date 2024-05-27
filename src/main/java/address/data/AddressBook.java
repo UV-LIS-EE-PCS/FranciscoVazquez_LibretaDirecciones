@@ -22,7 +22,6 @@ public class AddressBook {
     }
 
 
-    //This method finds entries that match the lastname insert
     public List<AddressEntry> searchEntry(String lastName) {
         List<AddressEntry> result = new ArrayList<>();
         for (AddressEntry entry : addressEntries) {
@@ -33,7 +32,6 @@ public class AddressBook {
         return result;
     }
 
-    // This method print results of the previous method in a more readble format
     public void printSearchResults(String lastName){
         List<AddressEntry> results = searchEntry(lastName);
         int count = 1;
@@ -51,13 +49,10 @@ public class AddressBook {
                 System.out.println("Teléfono: " + entry.getPhone());
 
                 count++;
-
             }
         }
     }
 
-
-    //Muestra todas las entradas ordenadas por el Apellido
     public void printEntriesSortedByLastName() {
         Collections.sort(addressEntries, (a1, a2) -> a1.getLastName().compareTo(a2.getLastName()));
         int count = 1;

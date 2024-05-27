@@ -1,9 +1,9 @@
 # Proyecto Libreta de Direcciones en Java
 
 Este proyecto implementa una libreta de direcciones simple en Java. Permite a los usuarios agregar, eliminar, buscar y mostrar entradas de direcciones, además de cargar datos desde un archivo.
-(Para una información más detallada revise la wiki del repositorio).
+**(Para una información más detallada revise la wiki del repositorio).**
 
-## _Estructura del Proyecto
+## Estructura del Proyecto
 
 El proyecto está organizado en los siguientes paquetes y clases:
 

@@ -5,11 +5,19 @@ import static org.junit.jupiter.api.Assertions.*;
 import address.data.AddressBook;
 
 
+
+/**
+ * La clase MenuTest realiza pruebas unitarias para la clase Menu.
+ */
 public class MenuTest {
 
     private AddressBook addressBook;
     private Menu menu;
 
+
+    /**
+     * Configura una nueva instancia de AddressBook y Menu antes de cada prueba.
+     */
     @BeforeEach
     public void setUp() {
         addressBook = new AddressBook();
@@ -17,6 +25,10 @@ public class MenuTest {
     }
 
 
+    /**
+     * Prueba el método printMenuOptions() de la clase Menu.
+     * Verifica que las opciones del menú se impriman correctamente.
+     */
     @Test
     public void testPrintMenuOptions() {
 

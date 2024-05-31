@@ -8,19 +8,30 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
+
+/**
+ * La clase Menu proporciona una interfaz para interactuar con el AddressBook.
+ */
 public class Menu {
     private final AddressBook addressBook;
     private final Scanner scanner;
     private char option;
 
-    // Constructor
+    /**
+     * Constructor de la clase Menu.
+     *
+     * @param addressBook El libro de direcciones con el que interactuará el menú.
+     */
     public Menu(AddressBook addressBook) {
         this.addressBook = addressBook;
         this.scanner = new Scanner(System.in);
         this.option = ' ';
     }
 
-    // Metodos
+
+    /**
+     * Muestra el menú y ejecuta la opción seleccionada por el usuario.
+     */
     public void displayMenu(){
         do{
             System.out.println(printMenuOptions());
@@ -29,6 +40,12 @@ public class Menu {
         }while(option != 'f');
     }
 
+
+    /**
+     * Devuelve las opciones del menú en forma de cadena.
+     *
+     * @return Las opciones del menú.
+     */
     public String printMenuOptions(){
         return "\nAddress Book Menu:\n" +
                 "a) Cargar entradas desde un archivo.\n" +
@@ -40,6 +57,10 @@ public class Menu {
                 "Seleccione una opción (a-f): ";
     }
 
+
+    /**
+     * Obtiene la opción del usuario y la almacena en el campo 'option'.
+     */
     public void getUserOption(){
         while (true) {
             String input = scanner.nextLine().trim();
@@ -52,6 +73,12 @@ public class Menu {
         }
     }
 
+
+    /**
+     * Ejecuta la opción seleccionada por el usuario.
+     *
+     * @param option La opción seleccionada por el usuario.
+     */
     public void executeUserOption(char option){
         switch (Character.toLowerCase(option)) {
             case 'a' -> loadEntriesFromFile(); // Metodo para leer archivos de texto por consola
@@ -64,6 +91,10 @@ public class Menu {
         }
     }
 
+
+    /**
+     * Agrega una nueva entrada del usuario al libro de direcciones.
+     */
     public void addUserEntry(){
         try {
             System.out.println("Ingrese los detalles del nuevo registro:");
@@ -101,6 +132,10 @@ public class Menu {
         }
     }
 
+
+    /**
+     * Elimina una entrada del usuario del libro de direcciones.
+     */
     public void deleteUserEntry(){
         System.out.println("Ingrese el apellido del registro que desee borrar.");
         String lastNameDelete = scanner.nextLine().trim();
@@ -120,6 +155,9 @@ public class Menu {
     }
 
 
+    /**
+     * Busca una entrada del usuario en el libro de direcciones por apellido.
+     */
     public void searchUserEntry() {
         System.out.println("Ingrese el apellido del contacto que desee buscar:");
         String lastNameEntry = scanner.nextLine().trim();
@@ -127,10 +165,18 @@ public class Menu {
         addressBook.printSearchResults(lastNameEntry);
     }
 
+
+    /**
+     * Muestra todas las entradas del ususario ordenadas por apellido.
+     */
     public void sortUserEntry() {
         addressBook.printEntriesSortedByLastName();
     }
 
+
+    /**
+     * Carga entradas desde un archivo.
+     */
     public void loadEntriesFromFile() {
         System.out.println("El archivo debe de tener la información separada por comas: Nombre, Apellido, Calle, etc.");
         System.out.println("Ingrese el nombre del archivo (con extensión .txt): ");
@@ -169,126 +215,27 @@ public class Menu {
         }
     }
 
+    /**
+     * Valida el formato del correo electrónico.
+     *
+     * @param email El correo electrónico a validar.
+     * @throws Exception Si el correo electrónico no contiene '@'.
+     */
     private void validateEmail(String email) throws Exception {
         if (!email.contains("@")) {
             throw new Exception("El correo electrónico debe contener '@'.");
         }
     }
 
+    /**
+     * Valida el formato del número de teléfono.
+     *
+     * @param phone El número de teléfono a validar.
+     * @throws Exception Si el número de teléfono no tiene 10 dígitos.
+     */
     private void validatePhone(String phone) throws Exception {
         if (phone.length() != 10) {
             throw new Exception("El número de teléfono debe ser de 10 dígitos.");
         }
     }
 }
-
-
-// Metodo refactorizado sin validaciones
-//    private void addUserEntry(){
-//        System.out.println("Ingrese los detalles del nuevo registro:");
-//        System.out.println("Nombre: ");
-//        String name = scanner.nextLine().trim();
-//        System.out.print("Apellido: ");
-//        String lastName = scanner.nextLine().trim();
-//        System.out.print("Calle: ");
-//        String street = scanner.nextLine().trim();
-//        System.out.print("Ciudad: ");
-//        String city = scanner.nextLine().trim();
-//        System.out.print("Estado: ");
-//        String state = scanner.nextLine().trim();
-//        System.out.print("Código Postal: ");
-//        int postalCode = scanner.nextInt();
-//        scanner.nextLine();
-//        System.out.print("Correo Electrónico: ");
-//        String email = scanner.nextLine().trim();
-//        System.out.print("Teléfono: ");
-//        String phone = scanner.nextLine().trim();
-//
-//        AddressEntry newEntry = new AddressEntry(name, lastName, street, city, state, postalCode, email, phone);
-//        addressBook.addEntry(newEntry);
-//        System.out.println("Nueva entrada agregada exitosamente :)");
-//    }
-
-
-
-// Metodo displayMenu antes de ser refactorizado. Observe que estaba muy largo
-    /*public void displayMenu() {
-        char choice;
-        do {
-            System.out.println("\nAddress Book Menu:");
-            System.out.println("a) Cargar entradas desde un archivo.");
-            System.out.println("b) Agregar una nueva entrada.");
-            System.out.println("c) Eliminar una entrada.");
-            System.out.println("d) Buscar una entrada por apellido.");
-            System.out.println("e) Mostrar todas las entradas ordenadas por apellido.");
-            System.out.println("f) Salir.");
-            System.out.print("Seleccione una opción (a-f): ");
-            choice = scanner.next().charAt(0);
-            scanner.nextLine(); // consume the newline character
-
-            switch (Character.toLowerCase(choice)) {
-                case 'a':
-                    // Implementar carga de entradas desde un archivo
-                    System.out.println("\nPronta funcionalidad a implementar");
-                    break;
-                case 'b':
-                    System.out.println("Ingrese los detalles del nuevo registro:");
-                    System.out.print("Nombre: ");
-                    String name = scanner.nextLine();
-                    System.out.print("Apellido: ");
-                    String lastName = scanner.nextLine();
-                    System.out.print("Calle: ");
-                    String street = scanner.nextLine();
-                    System.out.print("Ciudad: ");
-                    String city = scanner.nextLine();
-                    System.out.print("Estado: ");
-                    String state = scanner.nextLine();
-                    System.out.print("Código Postal: ");
-                    int postalCode = scanner.nextInt();
-                    scanner.nextLine();
-                    System.out.print("Correo Electrónico: ");
-                    String email = scanner.nextLine();
-                    System.out.print("Teléfono: ");
-                    String phone = scanner.nextLine();
-
-                    AddressEntry newEntry = new AddressEntry(name, lastName, street, city, state, postalCode, email, phone);
-                    addressBook.addEntry(newEntry);
-                    System.out.println("Nueva entrada agregada exitosamente :)");
-                    break;
-                case 'c':
-                    // Implementar eliminar una entrada
-                    System.out.println("Ingrese el apellido del registro que desee borrar.");
-                    String lastNameDelete = scanner.nextLine();
-                    List<AddressEntry> result = addressBook.searchEntry(lastNameDelete);
-                    addressBook.printSearchResults(lastNameDelete);
-
-                    System.out.println("\nIngresa el numero del registro a eliminar: ");
-                    int recordToDelete = scanner.nextInt();
-
-                    if(recordToDelete >=1 && recordToDelete<=result.size()){
-                        AddressEntry entryToDelete = result.get(recordToDelete-1);
-                        addressBook.removeEntry(entryToDelete);
-                        System.out.println("El registro ha sido eliminado de manera correcta");
-                    }else{
-                        System.out.println("Numero de registro no valido :(");
-                    }
-
-                    break;
-                case 'd':
-                    // Implementar buscar una entrada por apellido
-                    System.out.println("Ingrese el apellido del contacto que desee buscar:");
-                    String lastNameEntry = scanner.nextLine();
-                    addressBook.searchEntry(lastNameEntry);
-                    addressBook.printSearchResults(lastNameEntry);
-                    break;
-                case 'e':
-                    addressBook.displayEntriesSortedByLastName();
-                    break;
-                case 'f':
-                    System.out.println("¡Adiós!");
-                    break;
-                default:
-                    System.out.println("Opción no válida. Por favor, seleccione una opción entre a-f.");
-            }
-        } while (choice != 'f');
-    }*/

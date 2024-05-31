@@ -83,11 +83,15 @@ public class AddressBook {
      * Imprime todas las entradas de la libreta de direcciones ordenadas por apellido.
      */
     public void printEntriesSortedByLastName() {
-        Collections.sort(addressEntries, (a1, a2) -> a1.getLastName().compareTo(a2.getLastName()));
-        int count = 1;
-        for (AddressEntry entry : addressEntries) {
-            System.out.println("\n"+ count + "." + entry);
-            count++;
+        if(addressEntries.isEmpty()){
+            System.out.println("No hay ningun registro para mostrar");
+        }else {
+            Collections.sort(addressEntries, (a1, a2) -> a1.getLastName().compareTo(a2.getLastName()));
+            int count = 1;
+            for (AddressEntry entry : addressEntries) {
+                System.out.println("\n" + count + "." + entry);
+                count++;
+            }
         }
     }
 

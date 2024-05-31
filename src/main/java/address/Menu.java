@@ -181,9 +181,11 @@ public class Menu {
         System.out.println("El archivo debe de tener la información separada por comas: Nombre, Apellido, Calle, etc.");
         System.out.println("Ingrese el nombre del archivo (con extensión .txt): ");
         String fileName = scanner.nextLine().trim();
+        int count = 1;
 
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
+
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length != 8) {
@@ -204,14 +206,21 @@ public class Menu {
 
                 AddressEntry entry = new AddressEntry(name, lastName, street, city, state, postalCode, email, phone);
                 addressBook.addEntry(entry);
+
+                System.out.println("---------- Entrada número " + count + "----------");
+                System.out.println(entry.getName() + " " + entry.getLastName() + "\n" + entry.getStreet() + "\n" + entry.getCity()
+                        + ", " + entry.getState() + ", C.P. " + entry.getPostalCode() + "\n" + entry.getEmail() + "\n" + entry.getPhone());
+
+                System.out.println("Entrada número " + count + " cargada correctamente desde el archivo " + fileName + "\n");
+                count++;
             }
-            System.out.println("Entradas cargadas correctamente desde el archivo " + fileName);
+//            System.out.println("Entradas cargadas correctamente desde el archivo " + fileName);
         } catch (IOException e) {
-            System.out.println("Error al leer el archivo: " + e.getMessage());
+            System.out.println("Error al leer el archivo: "  +e.getMessage());
         } catch (NumberFormatException e) {
-            System.out.println("Error al procesar el código postal: " + e.getMessage());
+            System.out.println("Error al leer el código postal en la entrada " + count + ": " + e.getMessage());
         } catch(Exception e){
-            System.out.println("Error al leer Email: " + e.getMessage());
+            System.out.println("Error al leer la entrada " + count + ": " + e.getMessage());
         }
     }
 
